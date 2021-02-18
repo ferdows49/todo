@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="New todo" aria-label="Search">
+            <button class="btn btn-success" type="submit">Add</button>
+        </form>
+    </div>
+</nav>
+    <div>
+        <table class="table table-dark">
+            <thead>
+            <h1>To-do list</h1>
+            </thead>
+            <tbody>
+            {% for list in lists %}
+                <ul>
+                    <li>
+                        {% if list.completed %}
+                        <div class="alert alert-dark" role="alert">
+                            {{ list.title }}
+                            <button type="button" class="btn btn-outline-success">Completed</button>
+                            <button type="button" class="btn btn-outline-danger">Delete</button>
+                        </div>
+                        {% else %}
+                        <div class="alert alert-info" role="alert">
+                            {{ list.title }}
+                            <button type="button" class="btn btn-outline-success">Completed</button>
+                            <button type="button" class="btn btn-outline-danger">Delete</button>
+                        </div>
+                        {% endif %}
+                    </li>
+                </ul>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>
